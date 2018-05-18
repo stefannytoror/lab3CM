@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Lab3Services</string>
+    <string name="title_activity_sing_in">SingInActivity</string>
+    <string name="btnSignInGoogle">Iniciar sesión con Google</string>
+    <string name="btnAlreadyHaveAccount">Ya tienes cuenta? Inicia sesion</string>
+    <string name="txtRegisterName">Nombre</string>
+    <string name="txtRegistrate">¿No tienes cuenta? Regístrate</string>
+    <string name="btnLogin">Sign in</string>
+    <string name="txtUserName">Email</string>
+    <string name="txtUserPassword">Contraseña</string>
+    <string name="btnSignUp">Registrarse</string>
+    <string name="btnMenuLogout">Cerrar sesion</string>
+    <string name="btnMenuHelp">Ayuda</string>
+    <string name="txtBikePartner">BIKE PARTNER</string>
+    <string name="title_activity_nd">NDActivity</string>
+</resources>
