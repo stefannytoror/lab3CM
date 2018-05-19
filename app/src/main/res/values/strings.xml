@@ -13,4 +13,20 @@
     <string name="btnMenuHelp">Ayuda</string>
     <string name="txtBikePartner">BIKE PARTNER</string>
     <string name="title_activity_nd">NDActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    //Navigation drawer
+    <string name="txtNDPlatos">Platos</string>
+    <string name="txtNDBebidas">Bebidas</string>
+    <string name="txtNDPerfil">Perfil</string>
+    <string name="txtNDConfiguration">Configuración</string>
+    <string name="txtNDLogOut">Cerrar sesión</string>
+    <string name="txtNDAbout">Acerca de</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

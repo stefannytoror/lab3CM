@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_plates"
+            android:icon="@drawable/ic_local_dining_48px"
+            android:title="@string/txtNDPlatos" />
+        <item
+            android:id="@+id/nav_drinks"
+            android:icon="@drawable/ic_local_bar_48px"
+            android:title="@string/txtNDBebidas" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_perm_identity_48px"
+            android:title="@string/txtNDPerfil" />
+        <item
+            android:id="@+id/nav_config"
+            android:icon="@drawable/ic_build_48px"
+            android:title="@string/txtNDConfiguration" />
+        <item
+            android:id="@+id/nav_logOut"
+            android:icon="@drawable/ic_highlight_off_48px"
+            android:title="@string/txtNDLogOut" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_info_outline_48px"
+            android:title="@string/txtNDAbout" />
+    </group>
+
+</menu>

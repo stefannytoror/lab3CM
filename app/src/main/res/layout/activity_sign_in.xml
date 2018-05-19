@@ -7,7 +7,7 @@
     android:id="@+id/root_view"
     tools:context="lab3.gr02_20181.compumovil.udea.edu.co.lab3services.MainActivity">
 
-    <!--<ScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -48,7 +48,6 @@
                         android:id="@+id/field_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableLeft=""
                         android:gravity="center"
                         android:hint="@string/txtUserName"
                         android:imeOptions="actionNext"
@@ -65,7 +64,6 @@
                         android:id="@+id/field_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableLeft=""
                         android:gravity="center"
                         android:hint="@string/txtUserPassword"
                         android:imeOptions="actionDone"
@@ -89,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@android:color/holo_blue_dark"
-                    android:onClick="onClickLogin"
+                    android:onClick="onClick"
                     android:text="@string/btnLogin"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
@@ -135,6 +133,6 @@
 
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>-->
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
