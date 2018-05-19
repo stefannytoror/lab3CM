@@ -27,6 +27,28 @@
     <string name="txtNDLogOut">Cerrar sesión</string>
     <string name="txtNDAbout">Acerca de</string>
 
+    //Plates and Drinks
+    <string name="hintNombrePlato">Ingrese nombre del plato</string>
+    <string name="checkBoxManana">Mañana</string>
+    <string name="checkBoxTarde">Tarde</string>
+    <string name="checkBoxNoche">Noche</string>
+    <string name="labelTipoPlato">Tipo de plato</string>
+    <string name="radioBtnEntrada">Entrada</string>
+    <string name="radioBtnPlatoFuerte">Plato fuerte</string>
+    <string name="labelPrecio">Precio</string>
+    <string name="hintPrecio">0</string>
+    <string name="hintIngredientes">Ingrese ingredientes ej: papa, huevo</string>
+    <string name="btnAgregarPlato">Agregar</string>
+    <string name="txtTiempoPlato">Tiempo de Preparación</string>
+    <string name="txtIngredientes">Ingredientes</string>
+    <string name="hintNombreBebida">Ingrese nombre de la bebida</string>
+    <string name="labelPrecioBebida">Precio</string>
+    <string name="btnAgregarBebida">Agregar</string>
+    <string name="btnRegristrarPlato">Añadir Plato</string>
+    <string name="btnRegistrarBebida">Añadir Bebida</string>
+    <string name="itemMenuBorrar">Borrrar</string>
+    <string name="itemMenuSalir">Salir</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -34,6 +34,7 @@ public class DrinksFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragmen
         View view = inflater.inflate(R.layout.fragment_drinks, container, false);
+
         mreference = FirebaseDatabase.getInstance().getReference().child("drinks");
         mreference.keepSynced(true);
 

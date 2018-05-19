@@ -43,9 +43,10 @@ public class DrinkInfo {
         this.ingredientes = ingredientes;
     }
 
-    public DrinkInfo(String uid, String nombre, String precio) {
+    public DrinkInfo(String uid, String nombre, String precio,String ingredientes) {
         this.uid = uid;
         this.nombre = nombre;
         this.precio = precio;
+        this.ingredientes = ingredientes;
     }
 }

@@ -92,7 +92,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             /*Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);*/
 
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, NDActivity.class);
             startActivity(intent);
 
         }
