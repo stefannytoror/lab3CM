@@ -123,6 +123,7 @@
     <orderEntry type="library" name="firebase-common-license-12.0.1" level="project" />
     <orderEntry type="library" name="transition-26.1.0" level="project" />
     <orderEntry type="library" name="firebase-auth-12.0.1" level="project" />
+    <orderEntry type="library" name="firebase-storage-common-12.0.1" level="project" />
     <orderEntry type="library" name="support-compat-26.1.0" level="project" />
     <orderEntry type="library" name="firebase-database-connection-12.0.1" level="project" />
     <orderEntry type="library" name="firebase-core-12.0.1" level="project" />
@@ -136,8 +137,10 @@
     <orderEntry type="library" scope="TEST" name="javawriter-2.1.1" level="project" />
     <orderEntry type="library" name="play-services-auth-12.0.1" level="project" />
     <orderEntry type="library" name="play-services-tasks-12.0.1" level="project" />
+    <orderEntry type="library" name="firebase-storage-license-12.0.1" level="project" />
     <orderEntry type="library" name="constraint-layout-solver-1.1.0" level="project" />
     <orderEntry type="library" name="design-26.1.0" level="project" />
+    <orderEntry type="library" name="firebase-storage-12.0.1" level="project" />
     <orderEntry type="library" name="cardview-v7-26.1.0" level="project" />
     <orderEntry type="library" name="support-core-ui-26.1.0" level="project" />
     <orderEntry type="library" name="play-services-auth-base-license-12.0.1" level="project" />
@@ -154,6 +157,7 @@
     <orderEntry type="library" scope="TEST" name="espresso-core-3.0.2" level="project" />
     <orderEntry type="library" name="play-services-basement-12.0.1" level="project" />
     <orderEntry type="library" name="firebase-analytics-impl-license-12.0.1" level="project" />
+    <orderEntry type="library" name="firebase-storage-common-license-12.0.1" level="project" />
     <orderEntry type="library" scope="TEST" name="runner-1.0.2" level="project" />
     <orderEntry type="library" scope="TEST" name="jsr305-2.0.1" level="project" />
     <orderEntry type="library" name="play-services-auth-api-phone-12.0.1" level="project" />

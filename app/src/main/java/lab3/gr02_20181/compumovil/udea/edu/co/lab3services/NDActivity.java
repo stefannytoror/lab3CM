@@ -1,6 +1,7 @@
 package lab3.gr02_20181.compumovil.udea.edu.co.lab3services;
 
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -30,6 +31,8 @@ import android.support.v4.app.Fragment;
 
 public class NDActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Uri mImageUri;
 
     private FirebaseAuth SWAuth;
     private GoogleApiClient mGoogleApiClient;
@@ -197,6 +200,7 @@ public class NDActivity extends AppCompatActivity
                 .beginTransaction()
                 .replace(R.id.container,fragment,"drinkFragmentTag")
                 .addToBackStack(null).commit();
+
 
     }
 
