@@ -1,8 +1,10 @@
 package lab3.gr02_20181.compumovil.udea.edu.co.lab3services;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -56,7 +58,7 @@ public class PlatesFragment extends Fragment{
                 (PlateInfo.class,R.layout.card_view_plate,PlatesFragment.PlateViewHolder.class,mreference){
 
             @Override
-            public  void populateViewHolder(PlatesFragment.PlateViewHolder plateViewHolder, PlateInfo model , int position){
+            public  void populateViewHolder(PlatesFragment.PlateViewHolder plateViewHolder, final PlateInfo model , int position){
 
                 plateViewHolder.setNombre(model.getNamePlate());
                 String price = String.valueOf(model.getPricePlate());
@@ -68,6 +70,30 @@ public class PlatesFragment extends Fragment{
                 Log.d("TAG", "populateViewHolder: " + model.getmImageUrl());
 
                 plateViewHolder.setImageDrink(model.getmImageUrl(),getActivity());
+
+                plateViewHolder.cardViewPlate.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        PlateInfo model1 = model;
+                        Bundle b = new Bundle();
+                        b.putString("namePlate",model1.getNamePlate());
+                        b.putString("schedulePlate",model1.getSchedulePlate());
+                        b.putString("typePlate",model1.getTypePlate());
+                        b.putInt("pricePlate",model1.getPricePlate());
+                        b.putString("timePlate",model1.getTimePlate());
+                        b.putString("ingredientsPlate",model1.getIngridientsPlate());
+                        b.putString("picturePlate",model1.getmImageUrl());
+
+
+
+
+                        Fragment platesf = new ShowCompleteInfoPlate();
+                        platesf.setArguments(b);
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction().replace(R.id.container, platesf).commit();
+                    }
+                });
 
             }
         };
@@ -83,6 +109,7 @@ public class PlatesFragment extends Fragment{
 
         View mview;
         ImageView plateImage = (ImageView) itemView.findViewById(R.id.imgCV_plate);
+        CardView cardViewPlate = (CardView) itemView.findViewById(R.id.cardViewPlate);
 
         public PlateViewHolder(View itemView) {
             super(itemView);
