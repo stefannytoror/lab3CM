@@ -155,7 +155,7 @@ public class AddPlatesFragment extends Fragment implements TimePickerDialog.OnTi
         switch (v.getId()){
             case R.id.btnAgregarPlato:
                 uploadFile();
-                Fragment platesf = new DrinksFragment();
+                Fragment platesf = new PlatesFragment();
                 getActivity().getSupportFragmentManager()
                         .beginTransaction().replace(R.id.container, platesf).commit();
                 break;

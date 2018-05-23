@@ -102,7 +102,7 @@ public class ShowCompleteInfoDrink extends Fragment {
         });
 
 
-        Log.d("FUNCIONA", "onCreateView: " + getArguments().getString("nameDrink"));
+
 
         //getArguments().getString("nameDrink")
         t = (TextView)view.findViewById(R.id.txtNameCompleteDrink);
