@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -53,8 +54,15 @@ public class NDActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Fragment fragment = new PlatesFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
 
 
         initGoogleAccount();
@@ -119,6 +127,8 @@ public class NDActivity extends AppCompatActivity
         Fragment fragment = null;
 
         if (id == R.id.nav_drinks) {
+            SearchView search = (SearchView) findViewById(R.id.search);
+            search.setVisibility(View.VISIBLE);
             fragment = new DrinksFragment();
             getSupportFragmentManager()
                     .beginTransaction()
@@ -126,6 +136,8 @@ public class NDActivity extends AppCompatActivity
                     .commit();
 
         } else if (id == R.id.nav_plates) {
+            SearchView search = (SearchView) findViewById(R.id.search);
+            search.setVisibility(View.VISIBLE);
             fragment = new PlatesFragment();
             getSupportFragmentManager()
                     .beginTransaction()
@@ -133,6 +145,8 @@ public class NDActivity extends AppCompatActivity
                     .commit();
 
         } else if (id == R.id.nav_profile) {
+            SearchView search = (SearchView) findViewById(R.id.search);
+            search.setVisibility(View.INVISIBLE);
             fragment = new UserProfileFragment();
             getSupportFragmentManager()
                     .beginTransaction()
@@ -141,8 +155,17 @@ public class NDActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_config) {
+            SearchView search = (SearchView) findViewById(R.id.search);
+            search.setVisibility(View.INVISIBLE);
+            fragment = new PreferenceFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container,fragment)
+                    .commit();
 
         } else if (id == R.id.nav_about) {
+           /* SearchView search = (SearchView) findViewById(R.id.search);
+            search.setVisibility(View.INVISIBLE);*/
 
         }
 

@@ -33,7 +33,7 @@ public class PlatesFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragmen
         View view = inflater.inflate(R.layout.fragment_plates, container, false);
-
+        ((NDActivity)getActivity()).setActionBarTitle("Platos");
         mreference = FirebaseDatabase.getInstance().getReference().child("Food/plates");
         mreference.keepSynced(true);
 

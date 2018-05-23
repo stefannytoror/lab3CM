@@ -73,6 +73,7 @@ public class AddDrinksFragment extends Fragment implements View.OnClickListener 
         Button btnAddImage = (Button)view.findViewById(R.id.btnAgregarImgBebida);
         btnAddDrink.setOnClickListener(this);
         btnAddImage.setOnClickListener(this);
+        ((NDActivity)getActivity()).setActionBarTitle("Agregar bebida");
 
         img = (ImageView)view.findViewById(R.id.imgBebida);
 

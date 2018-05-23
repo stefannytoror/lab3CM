@@ -79,7 +79,7 @@ public class ShowCompleteInfoDrink extends Fragment {
         View view = inflater.inflate(R.layout.fragment_show_complete_info_drink,
                 container, false);
 
-        //((NDActivity)getActivity()).setActionBarTitle("Bebida");
+        ((NDActivity)getActivity()).setActionBarTitle("Bebida");
 
         TextView t;
         ImageView i;

@@ -14,7 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -33,6 +36,7 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -41,12 +45,11 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DrinksFragment extends Fragment {
+public class DrinksFragment extends Fragment implements Filterable {
 
     private RecyclerView mRecyclerView;
     private DatabaseReference mreference;
-
-
+    private SearchView searchView;
 
 
     public DrinksFragment() {
@@ -70,22 +73,33 @@ public class DrinksFragment extends Fragment {
 
         ImageView drinkImage;
 
+        searchView = (SearchView) getActivity().findViewById(R.id.search);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                getFilter().filter(newText);
+                return false;
+            }
+        });
+
         return view;
     }
 
 
-
-
-
     @Override
-    public  void onStart(){
+    public void onStart() {
         super.onStart();
-        final FirebaseRecyclerAdapter<DrinkInfo,DrinkViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<DrinkInfo,DrinkViewHolder>
-                (DrinkInfo.class,R.layout.card_view_drink,DrinkViewHolder.class,mreference){
+        final FirebaseRecyclerAdapter<DrinkInfo, DrinkViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<DrinkInfo, DrinkViewHolder>
+                (DrinkInfo.class, R.layout.card_view_drink, DrinkViewHolder.class, mreference) {
 
 
             @Override
-            public  void populateViewHolder(DrinkViewHolder drinkViewHolder, final DrinkInfo model , final int position){
+            public void populateViewHolder(DrinkViewHolder drinkViewHolder, final DrinkInfo model, final int position) {
 
                 drinkViewHolder.setNombre(model.getNombre());
                 drinkViewHolder.setPrecio(model.getPrecio());
@@ -93,8 +107,7 @@ public class DrinksFragment extends Fragment {
 
                 Log.d("TAG", "populateViewHolder: " + model.getmImageUrl());
 
-                drinkViewHolder.setImageDrink(model.getmImageUrl(),getActivity());
-
+                drinkViewHolder.setImageDrink(model.getmImageUrl(), getActivity());
 
 
                 drinkViewHolder.cardViewDrink.setOnClickListener(new View.OnClickListener() {
@@ -103,10 +116,10 @@ public class DrinksFragment extends Fragment {
                     public void onClick(View v) {
                         DrinkInfo model1 = model;
                         Bundle b = new Bundle();
-                        b.putString("nameDrink",model1.getNombre());
-                        b.putString("priceDrink",model1.getPrecio());
-                        b.putString("ingredientsDrinks",model1.getIngredientes());
-                        b.putString("pictureDrinks",model1.getmImageUrl());
+                        b.putString("nameDrink", model1.getNombre());
+                        b.putString("priceDrink", model1.getPrecio());
+                        b.putString("ingredientsDrinks", model1.getIngredientes());
+                        b.putString("pictureDrinks", model1.getmImageUrl());
 
                         Intent intent = new Intent(getActivity().getBaseContext(),
                                 ShowCompleteInfoDrink.class);
@@ -124,10 +137,6 @@ public class DrinksFragment extends Fragment {
 
         mRecyclerView.setAdapter(firebaseRecyclerAdapter);
     }
-
-
-
-
 
     public static class DrinkViewHolder extends RecyclerView.ViewHolder {
 
@@ -155,12 +164,71 @@ public class DrinksFragment extends Fragment {
         public void setImageDrink(String src, Context c) {
             ImageView drinkImage = (ImageView) itemView.findViewById(R.id.imgCV_drink);
             Picasso.with(c).load(src)
-                        .fit()
-                        .centerCrop()
-                        .into(drinkImage);
+                    .fit()
+                    .centerCrop()
+                    .into(drinkImage);
 
 
         }
     }
 
+    List<DrinkInfo> drinks;
+    List<DrinkInfo> drinksArray = new ArrayList<DrinkInfo>();
+    Filter filter;
+
+    @Override
+    public Filter getFilter() {
+        if (filter == null) {
+            filter = new myFilter(this, drinks);
+        }
+        return filter;
+    }
+
+    class myFilter extends Filter {
+
+        DrinksFragment adapterDrinks;
+        final List<DrinkInfo> drinks;
+        List<DrinkInfo> drinksArray;
+
+        public myFilter(DrinksFragment drinksFragment, List<DrinkInfo> drinks) {
+            super();
+            this.adapterDrinks = drinksFragment;
+            this.drinks = drinks;
+            this.drinksArray = new ArrayList<DrinkInfo>();
+        }
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            drinksArray.clear();
+            final FilterResults results = new FilterResults();
+
+            if (constraint.length() == 0) {
+                drinksArray.addAll(drinks);
+            } else {
+                final String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (final DrinkInfo drink : drinks) {
+                    if (drink.getNombre().toLowerCase().trim().contains(filterPattern)) {
+                        drinksArray.add(drink);
+                    } else if (String.valueOf(drink.getPrecio()).trim().contains(filterPattern)) {
+                        drinksArray.add(drink);
+                    }
+                }
+            }
+            results.values = drinksArray;
+            results.count = drinksArray.size();
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            try {
+                adapterDrinks.drinksArray.clear();
+                adapterDrinks.drinksArray.addAll((ArrayList<DrinkInfo>) results.values);
+                adapterDrinks.notifyAll();
+            } catch (Exception e) {
+
+            }
+        }
+    }
 }
