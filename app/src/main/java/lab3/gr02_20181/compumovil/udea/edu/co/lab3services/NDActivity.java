@@ -126,6 +126,11 @@ public class NDActivity extends AppCompatActivity
                     .commit();
 
         } else if (id == R.id.nav_plates) {
+            fragment = new PlatesFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container,fragment)
+                    .commit();
 
         } else if (id == R.id.nav_profile) {
 
@@ -203,5 +208,19 @@ public class NDActivity extends AppCompatActivity
 
 
     }
+
+    public void newPlate(View view){
+        Fragment fragment = new AddPlatesFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container,fragment,"platesFragmentTag")
+                .addToBackStack(null).commit();
+
+    }
+
+    public void setActionBarTitle(String title){
+        getSupportActionBar().setTitle(title);
+    }
+
 
 }
