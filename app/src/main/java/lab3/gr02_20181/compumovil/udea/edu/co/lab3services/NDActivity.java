@@ -133,6 +133,12 @@ public class NDActivity extends AppCompatActivity
                     .commit();
 
         } else if (id == R.id.nav_profile) {
+            fragment = new UserProfileFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container,fragment)
+                    .commit();
+
 
         } else if (id == R.id.nav_config) {
 

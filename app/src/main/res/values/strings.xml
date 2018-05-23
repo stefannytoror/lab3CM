@@ -11,7 +11,7 @@
     <string name="btnSignUp">Registrarse</string>
     <string name="btnMenuLogout">Cerrar sesion</string>
     <string name="btnMenuHelp">Ayuda</string>
-    <string name="txtBikePartner">BIKE PARTNER</string>
+    <string name="txtBikePartner">AUNT DAISY'S</string>
     <string name="title_activity_nd">NDActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -48,6 +48,9 @@
     <string name="btnRegistrarBebida">Añadir Bebida</string>
     <string name="itemMenuBorrar">Borrrar</string>
     <string name="itemMenuSalir">Salir</string>
+
+    //Profile
+    <string name="titleProfile">Mi Perfil</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
