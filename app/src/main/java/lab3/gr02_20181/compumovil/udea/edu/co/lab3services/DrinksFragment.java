@@ -2,10 +2,12 @@ package lab3.gr02_20181.compumovil.udea.edu.co.lab3services;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -34,6 +36,8 @@ import java.net.URL;
 import java.util.List;
 
 
+
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -56,7 +60,7 @@ public class DrinksFragment extends Fragment {
         // Inflate the layout for this fragmen
         View view = inflater.inflate(R.layout.fragment_drinks, container, false);
 
-        mreference = FirebaseDatabase.getInstance().getReference().child("drinks/drinks");
+        mreference = FirebaseDatabase.getInstance().getReference().child("Food/drinks");
         mreference.keepSynced(true);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_drinks);
@@ -69,14 +73,19 @@ public class DrinksFragment extends Fragment {
         return view;
     }
 
+
+
+
+
     @Override
     public  void onStart(){
         super.onStart();
-        FirebaseRecyclerAdapter<DrinkInfo,DrinkViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<DrinkInfo,DrinkViewHolder>
+        final FirebaseRecyclerAdapter<DrinkInfo,DrinkViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<DrinkInfo,DrinkViewHolder>
                 (DrinkInfo.class,R.layout.card_view_drink,DrinkViewHolder.class,mreference){
 
+
             @Override
-            public  void populateViewHolder(DrinkViewHolder drinkViewHolder, DrinkInfo model ,int position){
+            public  void populateViewHolder(DrinkViewHolder drinkViewHolder, final DrinkInfo model , final int position){
 
                 drinkViewHolder.setNombre(model.getNombre());
                 drinkViewHolder.setPrecio(model.getPrecio());
@@ -86,10 +95,30 @@ public class DrinksFragment extends Fragment {
 
                 drinkViewHolder.setImageDrink(model.getmImageUrl(),getActivity());
 
-                /*Picasso.with(getActivity()).load(model.getmImageUrl())
-                        .fit()
-                        .centerCrop()
-                        .into(drinkViewHolder.drinkImage);*/
+
+
+                drinkViewHolder.cardViewDrink.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        DrinkInfo model1 = model;
+                        Bundle b = new Bundle();
+                        b.putString("nameDrink",model1.getNombre());
+                        b.putString("priceDrink",model1.getPrecio());
+                        b.putString("ingredientsDrinks",model1.getIngredientes());
+                        b.putString("pictureDrinks",model1.getmImageUrl());
+
+                        Intent intent = new Intent(getActivity().getBaseContext(),
+                                ShowCompleteInfoDrink.class);
+                        intent.putExtra("drinkData", b);
+
+
+                        Fragment drinksf = new ShowCompleteInfoDrink();
+                        drinksf.setArguments(b);
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction().replace(R.id.container, drinksf).commit();
+                    }
+                });
             }
         };
 
@@ -104,6 +133,7 @@ public class DrinksFragment extends Fragment {
 
         View mview;
         ImageView drinkImage = (ImageView) itemView.findViewById(R.id.imgCV_drink);
+        CardView cardViewDrink = (CardView) itemView.findViewById(R.id.cardViewDrink);
 
         public DrinkViewHolder(View itemView) {
             super(itemView);
