@@ -89,7 +89,7 @@ public class AddDrinksFragment extends Fragment implements View.OnClickListener 
         addEventFirebaseListener();
 
         mStorageReference = FirebaseStorage.getInstance().getReference("drinks");
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference("drinks");
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference("Food");
 
         return view;
     }
@@ -142,9 +142,9 @@ public class AddDrinksFragment extends Fragment implements View.OnClickListener 
                 /*Intent ListDrinks = new Intent(getContext(), DrinksFragment.class);
                 startActivity(ListDrinks);*/
 
-                /*Fragment drinksf = new DrinksFragment();
+                Fragment drinksf = new DrinksFragment();
                 getActivity().getSupportFragmentManager()
-                        .beginTransaction().replace(R.id.container, drinksf).commit();*/
+                        .beginTransaction().replace(R.id.container, drinksf).commit();
                 break;
 
             case R.id.btnAgregarImgBebida:
